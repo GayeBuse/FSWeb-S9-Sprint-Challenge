@@ -12,21 +12,19 @@ export default function AppFunctional(props) {
   const [email, setEmail] = useState(initialEmail);
   const [steps, setSteps] = useState(initialSteps);
   // AŞAĞIDAKİ HELPERLAR SADECE ÖNERİDİR.
-  // Bunları silip kendi mantığınızla sıfırdan geliştirebilirsiniz.
 
-  function getXY() {
-    const coordinates = [(index % 3) + 1, Math.floor(index / 3) + 1];
-    return coordinates;
+  function getXY(index) {
+    const x = (index % 3) + 1;
 
-    // Koordinatları izlemek için bir state e sahip olmak gerekli değildir.
-    // Bunları hesaplayabilmek için "B" nin hangi indexte olduğunu bilmek yeterlidir.
+    const y = Math.floor(index / 3) + 1;
+    return { x, y };
   }
 
   function getXYMesaj() {
-    // Kullanıcı için "Koordinatlar (2, 2)" mesajını izlemek için bir state'in olması gerekli değildir.
-    // Koordinatları almak için yukarıdaki "getXY" helperını ve ardından "getXYMesaj"ı kullanabilirsiniz.
-    // tamamen oluşturulmuş stringi döndürür.
-    return `Koordinatlar (${getXY()[0]}, ${getXY()[1]})`;
+    const { x, y } = getXY();
+    return `Coordinates (${x},${y}) `;
+    // Koordinatları izlemek için bir state e sahip olmak gerekli değildir.
+    // Bunları hesaplayabilmek için "B" nin hangi indexte olduğunu bilmek yeterlidir.
   }
 
   function reset() {
